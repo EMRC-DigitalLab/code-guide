@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Guide</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: #222;
+    }
+    h1 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+    h2 {
+      margin-top: 30px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    h3 {
+      margin-top: 20px;
+    }
+    ul {
+      margin: 10px 0 10px 20px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    code {
+      background-color: #eaeaea;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    }
+    pre {
+      background-color: #eaeaea;
+      padding: 10px;
+      border-radius: 3px;
+      overflow-x: auto;
+    }
+    /* Section Separator */
+    hr {
+      margin: 40px 0;
+      border: 0;
+      border-top: 1px solid #ddd;
+    }
+    /* Container for content */
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Code Guide</h1>
+
+    <h2>1. Introduction</h2>
+
+    <h3>Purpose</h3>
+    <p>
+      This guide is designed to establish a standardized framework for coding and deployment within our team. Its primary aim is to ensure that every team member follows consistent practices that improve code quality, facilitate smooth collaboration, and streamline our deployment process. By outlining these best practices, we intend to reduce integration issues, minimize deployment errors, and ultimately accelerate our development cycle.
+    </p>
+
+    <h3>Scope</h3>
+    <p>The guide covers the following key areas:</p>
+    <ul>
+      <li><strong>Coding Standards:</strong> Guidelines for writing clean, maintainable, and well-documented code.</li>
+      <li><strong>Version Control:</strong> Best practices for using Git and GitHub, including branching strategies, commit messaging, and pull request reviews.</li>
+      <li><strong>Testing:</strong> Strategies for unit, integration, and end-to-end testing, along with continuous integration practices.</li>
+      <li><strong>Deployment:</strong> Procedures for automating deployments, managing different environments (development, staging, production), and handling rollbacks.</li>
+      <li><strong>Security &amp; Compliance:</strong> Measures for writing secure code and managing sensitive data.</li>
+      <li><strong>Maintenance &amp; Continuous Improvement:</strong> Guidelines for keeping the document and practices up to date, incorporating feedback, and ongoing team training.</li>
+    </ul>
+
+    <h3>Audience</h3>
+    <p>
+      This document is intended for all the Digital Systems Unit team (DSU) members involved in our software development lifecycle, including:
+    </p>
+    <ul>
+      <li><strong>Developers:</strong> Individuals writing and maintaining the code.</li>
+      <li><strong>New Team Members:</strong> Anyone onboarding who needs to quickly get up to speed with our coding and deployment processes.</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. Coding Standards</h2>
+
+    <h3>Style Guides</h3>
+
+    <h4>JavaScript &amp; React / Next.js</h4>
+    <p>
+      <strong>Baseline Standards:</strong> Use the Airbnb JavaScript style guide as a baseline, supplemented by ESLint rules to enforce consistency. For React and Next.js projects, follow component best practices (such as functional components with hooks) and consider adopting Prettier for automatic code formatting.
+    </p>
+
+    <h4>Python</h4>
+    <p>
+      <strong>Adherence to PEP8:</strong> Adhere to PEP8 guidelines to ensure readability and maintainability. Tools like Flake8 or pylint, integrated with VS Code, can help enforce these standards.
+    </p>
+
+    <h4>Java</h4>
+    <p>
+      <strong>Java Coding Conventions:</strong> Follow the Google Java Style Guide or Oracle’s Java conventions, ensuring that our code is consistent, clear, and maintainable across all Java-based projects.
+    </p>
+
+    <h4>General JavaScript Practices</h4>
+    <p>
+      Maintain consistency with ESLint and Prettier configurations to avoid style discrepancies, whether using vanilla JavaScript or frameworks.
+    </p>
+
+    <h4>VS Code Environment</h4>
+    <p>
+      Since VS Code is our primary editor, we recommend using relevant extensions (such as ESLint, Prettier, Python, and Java support plugins) and sharing workspace settings to ensure that everyone benefits from a consistent development setup.
+    </p>
+
+    <h3>Inline Code Documentation</h3>
+    <p>
+      Clear inline documentation is crucial for maintaining a codebase that is both understandable and maintainable. It helps team members quickly grasp the intent behind code segments and facilitates smoother onboarding. Below are the guidelines for documenting code in our primary languages:
+    </p>
+
+    <h4>JavaScript/React/Next.js</h4>
+    <ul>
+      <li>Use JSDoc-style comments to explain functions, components, and any complex logic.</li>
+      <ul>
+        <li>Include a brief description of the function’s purpose.</li>
+        <li>Explain parameters and their expected types.</li>
+        <li>Describe the expected return value and its type.</li>
+        <li>Note any exceptions or edge cases handled.</li>
+      </ul>
+    </ul>
+
+    <h4>Python</h4>
+    <ul>
+      <li>Employ comprehensive docstrings (using reStructuredText or NumPy style) within modules, classes, and functions.</li>
+      <ul>
+        <li>Provide a summary of what the function or class does.</li>
+        <li>List input parameters, their types, and any default values.</li>
+        <li>Describe the return value and any exceptions that might be raised.</li>
+        <li>Include additional context to aid understanding.</li>
+      </ul>
+    </ul>
+
+    <h4>Java</h4>
+    <ul>
+      <li>Utilize Javadoc comments to document classes, methods, and interfaces.</li>
+      <ul>
+        <li>Begin with a concise summary of the class or method’s purpose.</li>
+        <li>Use <code>@param</code> to describe parameters, <code>@return</code> for return types, and <code>@throws</code> for exceptions.</li>
+        <li>This helps generate professional and comprehensive API documentation.</li>
+      </ul>
+    </ul>
+
+    <hr>
+
+    <h2>3. External Documentation</h2>
+
+    <h3>What is a README File?</h3>
+    <p>
+      A README file is a foundational document that introduces a project. It provides essential information about the project’s purpose, structure, and usage. Typically written in Markdown for readability and accessibility, the README serves as the first point of contact for developers, stakeholders, and new team members. It is intended to answer key questions such as:
+    </p>
+    <ul>
+      <li>What does this project do?</li>
+      <li>How do I set it up?</li>
+      <li>How is it organized?</li>
+    </ul>
+
+    <h3>Global README File</h3>
+    <p>
+      Every repository should have a top-level (global) README file that offers a comprehensive overview of the project. This file should include:
+    </p>
+    <ul>
+      <li><strong>Project Overview:</strong>
+        <ul>
+          <li>A concise summary of the project’s overall purpose and objectives.</li>
+          <li>An explanation of the problems the project addresses and its intended impact.</li>
+        </ul>
+      </li>
+      <li><strong>Architectural Decisions &amp; High-Level Design:</strong>
+        <ul>
+          <li>A summary of the core architectural decisions and design patterns used.</li>
+          <li>Diagrams or flowcharts to illustrate key components and their interactions.</li>
+          <li>An explanation of how the chosen architecture supports scalability, maintainability, and performance.</li>
+        </ul>
+      </li>
+      <li><strong>Repository Structure:</strong>
+        <ul>
+          <li>An outline of the directory structure, explaining where major components, modules, or features are located.</li>
+          <li>Descriptions of key folders and files to help users navigate the project.</li>
+        </ul>
+      </li>
+      <li><strong>Setup &amp; Installation Instructions:</strong>
+        <ul>
+          <li>Detailed steps to get the project up and running, including prerequisites, dependencies, and configuration requirements.</li>
+          <li>Instructions for both development and production environments, where applicable.</li>
+        </ul>
+      </li>
+      <li><strong>Usage Guidelines &amp; Configuration Details:</strong>
+        <ul>
+          <li>How to use the project, including command-line options, configuration settings, and environment variables.</li>
+          <li>Any additional resources or links for more in-depth guidance (e.g., external documentation sites or wikis).</li>
+        </ul>
+      </li>
+      <li><strong>Audience &amp; Contribution Guidelines:</strong>
+        <ul>
+          <li>Information intended for new team members or external contributors.</li>
+          <li>Guidelines on how to contribute to the project, including coding standards, branch management, and code review processes.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Feature-Specific README Files</h3>
+    <p>
+      For larger repositories or complex projects, it is beneficial to create dedicated README files for individual modules or specific developer sessions. These files serve as detailed, session-based guides that capture the ongoing work and decisions related to a particular feature.
+    </p>
+    <ul>
+      <li><strong>Purpose of the Feature/Module:</strong>
+        <ul>
+          <li><strong>Overview:</strong> Clearly describe what the feature or module is designed to do (e.g., sign-up or sign-in functionality).</li>
+          <li><strong>Context:</strong> Explain how this component fits into the broader application and its significance to the overall project goals.</li>
+        </ul>
+      </li>
+      <li><strong>Detailed Usage and Testing Instructions:</strong>
+        <ul>
+          <li><strong>Usage:</strong> Provide step-by-step instructions on how to use or interact with the feature (user flows, expected behavior, sample inputs).</li>
+          <li><strong>Testing:</strong> Outline guidelines for running tests specific to the feature:
+            <ul>
+              <li>Setup requirements or configurations for testing.</li>
+              <li>Specific test commands or procedures.</li>
+              <li>Known testing considerations or environments (e.g., local, staging).</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Architectural &amp; Design Decisions:</strong>
+        <ul>
+          <li><strong>Decisions:</strong> Document any architectural choices made for the feature (design patterns, data flow decisions, chosen libraries).</li>
+          <li><strong>Rationale:</strong> Explain the reasoning behind these decisions, including impacts on performance, scalability, or maintainability.</li>
+          <li><strong>Impact:</strong> Describe how these choices affect integration with other parts of the system.</li>
+        </ul>
+      </li>
+      <li><strong>Dependencies and Integration Points:</strong>
+        <ul>
+          <li><strong>Dependencies:</strong> List any dependencies required by the feature, such as third-party libraries, APIs, or tools.</li>
+          <li><strong>Integration:</strong> Explain how the feature interacts with other modules and note any integration challenges or limitations.</li>
+          <li><strong>Known Issues:</strong> Document any known issues, constraints, or areas for future improvement.</li>
+        </ul>
+      </li>
+      <li><strong>Session-Specific Documentation:</strong>
+        <ul>
+          <li><strong>Developer Notes:</strong> Capture the current state of development in each session’s README. Include summaries of accomplishments, challenges, and next steps.</li>
+          <li><strong>Updates:</strong> Update the file frequently as the feature evolves.</li>
+          <li><strong>Reference:</strong> Reference related tickets, commits, or issues for additional context.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <hr>
+
+    <h2>4. Version Control &amp; GitHub Practices</h2>
+
+    <h3>Branching Strategy</h3>
+    <ul>
+      <li><strong>Main Repository as the Code Base:</strong> The primary repository holds the stable, production-ready code.</li>
+      <li><strong>Developer Forks and Feature Branches:</strong>
+        <ul>
+          <li>Each developer forks the main repository to create a personal workspace.</li>
+          <li>Feature branches (e.g., <code>feature/feature-name</code>) and bugfix branches (e.g., <code>bugfix/issue-description</code>) should be used consistently.</li>
+        </ul>
+      </li>
+      <li><strong>Sub-Main Repository for Integration:</strong>
+        <ul>
+          <li>A sub-main (or staging) repository serves as an intermediate integration point.</li>
+          <li>Developers create pull requests (PRs) from their feature branches to the sub-main repository for initial testing, review, and quality checks.</li>
+        </ul>
+      </li>
+      <li><strong>Final Merge to the Main Repository:</strong>
+        <ul>
+          <li>After thorough review and testing in the sub-main repository, code is merged into the main repository.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Commit Messages</h3>
+    <ul>
+      <li><strong>Clear and Descriptive:</strong>
+        <ul>
+          <li>Each commit should summarize the changes made and the rationale.</li>
+          <li>Use standardized prefixes (e.g., <code>feat:</code>, <code>fix:</code>, <code>docs:</code>) for clarity.</li>
+        </ul>
+      </li>
+      <li><strong>Context and Traceability:</strong>
+        <ul>
+          <li>Reference relevant issue or ticket numbers.</li>
+          <li>Provide enough context to understand the purpose and impact of the change.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Pull Requests (PRs)</h3>
+    <ul>
+      <li><strong>Creation:</strong>
+        <ul>
+          <li>Create a pull request from your feature branch (in your fork) to the sub-main repository when the work is complete.</li>
+          <li>Include a detailed description of the changes, known issues, and testing steps.</li>
+        </ul>
+      </li>
+      <li><strong>Review Process:</strong>
+        <ul>
+          <li>Conduct peer reviews focusing on code quality, adherence to standards, and overall functionality.</li>
+          <li>Use GitHub’s review tools to leave inline comments and suggestions.</li>
+        </ul>
+      </li>
+      <li><strong>Merging:</strong>
+        <ul>
+          <li>Once approved and tested, merge the PR into the sub-main repository.</li>
+          <li>After further integration testing, perform a final merge into the main repository.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Repository Structure</h3>
+    <ul>
+      <li><strong>Organizational Clarity:</strong>
+        <ul>
+          <li>Maintain a clear directory structure in the main repository, with well-organized folders for different modules, components, and features.</li>
+          <li>Each module should include its own documentation via README files.</li>
+        </ul>
+      </li>
+      <li><strong>Documentation Integration:</strong>
+        <ul>
+          <li>Global README files at the repository root explain the overall project.</li>
+          <li>Feature-specific README files in sub-folders provide detailed documentation for individual components.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Ideal Timeline for Pull, Push, and Merge Operations</h3>
+    <ul>
+      <li><strong>Day 0 – Feature Development &amp; PR Creation:</strong>
+        <ul>
+          <li>Developer completes work on a feature branch and creates a PR to the sub-main repository.</li>
+          <li>Run local tests and preliminary checks before PR creation.</li>
+        </ul>
+      </li>
+      <li><strong>Within 24 Hours – Code Review &amp; Initial Feedback:</strong>
+        <ul>
+          <li>Team members review the PR and provide feedback.</li>
+          <li>Developer addresses comments and updates the PR as needed.</li>
+        </ul>
+      </li>
+      <li><strong>24-48 Hours Post-PR – Merge to Sub-Main Repository:</strong>
+        <ul>
+          <li>Once approved and all tests pass, merge the PR into the sub-main (staging) repository.</li>
+          <li>Trigger automated integration testing.</li>
+        </ul>
+      </li>
+      <li><strong>Next 24 Hours – Staging &amp; Integration Testing:</strong>
+        <ul>
+          <li>Run integration tests in the sub-main repository and resolve any issues.</li>
+        </ul>
+      </li>
+      <li><strong>Within 72 Hours Overall – Final Merge to Main Repository:</strong>
+        <ul>
+          <li>Upon successful testing, schedule the final merge from the sub-main repository to the main repository.</li>
+          <li>Monitor for any post-merge issues or regressions.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <hr>
+
+    <h2>5. Deployment Processes</h2>
+
+    <h3>Environments</h3>
+    <ul>
+      <li><strong>Development:</strong> Used for local testing and feature development. This environment should mirror key aspects of production for effective debugging and rapid iteration.</li>
+      <li><strong>Staging:</strong> A pre-production environment where integrated features are thoroughly tested. It should replicate production settings (configurations, databases, third-party integrations) to ensure accurate testing.</li>
+      <li><strong>Production:</strong> The live environment accessed by end users. Deployments here must be rigorously tested and approved from staging to ensure stability, performance, and security.</li>
+    </ul>
+
+    <h3>Deployment Automation</h3>
+    <ul>
+      <li><strong>Automation Tools:</strong> Utilize CI/CD tools (e.g., GitHub Actions, Jenkins, GitLab CI) to automate build, test, and deployment processes, reducing human error and accelerating release cycles.</li>
+      <li><strong>Containerization:</strong> Use Docker to package applications and dependencies into portable containers, ensuring consistency across development, staging, and production.</li>
+      <li><strong>Orchestration:</strong> Manage containerized applications with Kubernetes (or similar tools) for scalability, high availability, and automated tasks (rolling updates, self-healing, load balancing).</li>
+      <li><strong>Scripting:</strong> Maintain scripts for routine deployment tasks (database migrations, environment variable setups, service restarts). Ensure scripts are version-controlled and documented.</li>
+    </ul>
+
+    <h3>Rollback Procedures</h3>
+    <ul>
+      <li><strong>Pre-Deployment Backups:</strong> Create backups or snapshots of critical systems, databases, and configurations before deploying changes.</li>
+      <li><strong>Version Tagging:</strong> Tag stable releases in the repository to easily revert to a known good state if needed.</li>
+      <li><strong>Automated Rollback Mechanisms:</strong> Integrate rollback procedures into the CI/CD pipeline to automatically revert changes if critical tests fail.</li>
+      <li><strong>Manual Rollback Guidelines:</strong> Document clear, step-by-step instructions for reverting code changes and re-deploying the last known good version, including post-deployment testing.</li>
+    </ul>
+
+    <h3>Monitoring &amp; Logging</h3>
+    <ul>
+      <li><strong>Monitoring Tools:</strong> Implement tools like Prometheus, Grafana, or New Relic to continuously monitor performance, resource usage, and system health, with alerts for anomalies.</li>
+      <li><strong>Logging Practices:</strong> Use centralized logging solutions (e.g., ELK Stack or Splunk) to collect and analyze logs, ensuring critical events and errors are captured for troubleshooting.</li>
+      <li><strong>Post-Deployment Validation:</strong> Run automated health checks and performance tests after deployments. Regularly review monitoring dashboards to catch issues early.</li>
+      <li><strong>Documentation &amp; Reporting:</strong> Maintain records of each deployment (what was deployed, when, issues encountered, resolution steps, and monitoring metrics) to inform continuous process improvement.</li>
+    </ul>
+
+    <hr>
+
+    <h2>6. Security &amp; Compliance</h2>
+
+    <h3>Code Security</h3>
+    <ul>
+      <li><strong>Secure Coding Practices:</strong> Follow secure coding guidelines (e.g., OWASP Top Ten) to identify and mitigate vulnerabilities. Regularly audit code and use automated security scanners.</li>
+      <li><strong>Dependency Management:</strong> Keep libraries and dependencies updated, using tools like Snyk, Dependabot, or npm audit to monitor for vulnerabilities.</li>
+      <li><strong>Secure Design Patterns:</strong> Apply principles such as least privilege, defense in depth, and fail-safe defaults. Enforce strict access controls to protect sensitive data.</li>
+    </ul>
+
+    <h3>Secrets Management</h3>
+    <ul>
+      <li><strong>Sensitive Data Handling:</strong> Store API keys, credentials, and secrets outside the codebase using environment variables or secure vaults (e.g., HashiCorp Vault, AWS Secrets Manager). Ensure encryption in transit and at rest.</li>
+      <li><strong>Access Control:</strong> Limit access to secrets only to required processes or users, and review permissions regularly.</li>
+      <li><strong>Automation &amp; Auditing:</strong> Integrate secrets management into CI/CD pipelines so that sensitive data is injected at runtime rather than stored in source control. Maintain logs and audit trails for access to secrets.</li>
+    </ul>
+
+
+
+   <p>This template is now ready to be used as your GitHub Pages documentation with built-in CSS styling. Feel free to adjust any sections or formatting to better suit your project’s needs. Happy documenting!</p>
+  </div>
+</body>
+</html>
